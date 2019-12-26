@@ -6,14 +6,14 @@ using Microsoft.Extensions.Logging;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KafkaWorker.Tasks
+namespace KafkaProducer.Tasks
 {
     public class TestMessageProducerTask : BackgroundService
     {
         private readonly IProducer<Null, string> _producer;
-        private readonly ILogger<TestMessageConsumerTask> _logger;
+        private readonly ILogger<TestMessageProducerTask> _logger;
 
-        public TestMessageProducerTask(ILogger<TestMessageConsumerTask> logger)
+        public TestMessageProducerTask(ILogger<TestMessageProducerTask> logger)
         {
             var config = new ProducerConfig { BootstrapServers = "localhost:9092" };
 
@@ -25,11 +25,11 @@ namespace KafkaWorker.Tasks
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                var deliveryResult = await _producer.ProduceAsync("hello-world-topic3", new Message<Null, string> { Value = "test" });
+                var deliveryResult = await _producer.ProduceAsync("Test", new Message<Null, string> { Value = "test" });
 
                 _logger.LogInformation($"Produce message '{deliveryResult.Value}' at: '{deliveryResult.TopicPartitionOffset}'.");
 
-                await Task.Delay(5000);
+                await Task.Delay(2000);
             }
         }
     }

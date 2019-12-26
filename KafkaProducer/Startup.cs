@@ -1,11 +1,11 @@
-﻿using KafkaWorker.Tasks;
+﻿using KafkaProducer.Tasks;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KafkaWorker
+namespace KafkaProducer
 {
     public class Startup
     {
@@ -18,7 +18,7 @@ namespace KafkaWorker
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHostedService<TestMessageConsumerTask>();
+            services.AddHostedService<TestMessageProducerTask>();
 
             //services.AddMessageQueueKafka(setup =>
             //{

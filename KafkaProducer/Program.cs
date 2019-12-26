@@ -1,7 +1,7 @@
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace KafkaWorker
+namespace KafkaProducer
 {
     public class Program
     {
@@ -15,7 +15,7 @@ namespace KafkaWorker
                .ConfigureWebHostDefaults(webBuilder =>
                {
                    webBuilder.UseStartup<Startup>();
-                   webBuilder.UseUrls("http://localhost:5000", "https://localhost:5001");
+                   webBuilder.UseUrls("http://localhost:5010", "https://localhost:5011");
                });
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace KafkaWorker.Entities
+﻿namespace KafkaProducer.Entities
 {
     public class TestMessage
     {
